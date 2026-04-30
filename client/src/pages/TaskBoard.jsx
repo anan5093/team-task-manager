@@ -35,14 +35,20 @@ const TaskBoard = () => {
   const [error, setError] = useState('');
 
   const loadData = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const [taskRes, projectRes, userRes] = await Promise.all([
-        api.get('/tasks', { params: filters }),
-        api.get('/projects'),
-        api.get('/users')
-      ]);
+  setLoading(true);
+  setError('');
+
+  // 🔥 sanitize filters (ONLY FIX)
+  const params = {};
+  if (filters.project) params.project = filters.project;
+  if (filters.user) params.user = filters.user;
+
+  try {
+    const [taskRes, projectRes, userRes] = await Promise.all([
+      api.get('/tasks', { params }),
+      api.get('/projects'),
+      api.get('/users')
+    ]);
       setTasks(taskRes.data);
       setProjects(projectRes.data);
       setUsers(userRes.data);
