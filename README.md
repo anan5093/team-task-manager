@@ -163,10 +163,10 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=<your deployed app URL>
 ```
 
-4. Set the **build command** to install all dependencies and build the React client:
+4. Most platforms run `npm install` automatically in the root. Set the **build command** to install the sub-package dependencies and build the React client:
 
 ```bash
-npm install && npm install --prefix server && npm install --prefix client && npm run build --prefix client
+npm install --prefix server && npm install --prefix client && npm run build --prefix client
 ```
 
 5. Set the **start command** to:
