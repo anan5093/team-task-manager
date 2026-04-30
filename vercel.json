@@ -1,6 +1,10 @@
 {
+  "installCommand": "cd client && npm install",
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/dist",
+  "framework": "vite",
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/assets/(.*)", "dest": "/client/dist/assets/$1" },
+    { "src": "/(.*)", "dest": "/client/dist/index.html" }
   ]
 }
