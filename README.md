@@ -6,7 +6,7 @@
 
 A production-ready full-stack team task management application. Admins create projects, assign tasks, and manage members; team members track their work and update task status — all through a clean, responsive interface.
 
-**Stack:** React 18 · Vite · Tailwind CSS · Node.js · Express · MongoDB · Mongoose · JWT · bcrypt
+**Stack:** React 18 · Vite · Tailwind CSS · Node.js · Express · MongoDB · Mongoose · JWT · bcryptjs
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@ A production-ready full-stack team task management application. Admins create pr
 - **Project management** — Admins create and manage projects, add members, and delete projects (cascades to tasks).
 - **Kanban task board** — Tasks move through three statuses: *To do*, *In progress*, and *Done*. Members can update the status of tasks assigned to them.
 - **Dashboard** — Real-time stats (total tasks, completed, overdue) filterable by project and team member.
-- **Secure authentication** — JWT tokens with configurable expiry; passwords hashed with bcrypt (12 rounds).
+- **Secure authentication** — JWT tokens with configurable expiry; passwords hashed with bcryptjs (12 rounds).
 - **Production-hardened API** — Helmet security headers, CORS, rate limiting (300 req / 15 min), and centralized error handling with `express-validator`.
 - **Single-service deployment** — Express serves the built React app in production; no separate static host needed.
 
@@ -47,11 +47,17 @@ A production-ready full-stack team task management application. Admins create pr
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/team-task-manager.git
+git clone https://github.com/anan5093/team-task-manager.git
 cd team-task-manager
 
-# Install all dependencies (root, server, and client)
-npm run install:all
+# Install root dependencies
+npm install
+
+# Install server dependencies
+npm install --prefix server
+
+# Install client dependencies
+npm install --prefix client
 ```
 
 ### Environment Variables
@@ -141,26 +147,26 @@ Authorization: Bearer <token>
 
 ## Deployment
 
-### Railway (recommended)
+### Single-service (Railway, Render, Fly.io)
 
-This repository is configured to run as a single Railway service — Express serves both the API and the built React app.
+Express serves both the API and the built React app from a single process, making it straightforward to deploy on any Node.js-capable platform.
 
-1. Create a new Railway project and connect this repository.
-2. Add a MongoDB plugin or connect an external Atlas cluster.
-3. Set the following environment variables in Railway:
+1. Connect your repository to your platform of choice.
+2. Provision a MongoDB instance (a managed Atlas cluster or a platform plugin).
+3. Set the following environment variables:
 
 ```env
 NODE_ENV=production
 MONGO_URI=<your MongoDB connection string>
 JWT_SECRET=<long random production secret>
 JWT_EXPIRES_IN=7d
-CLIENT_URL=<your Railway app URL>
+CLIENT_URL=<your deployed app URL>
 ```
 
-4. Set the **build command** to (this installs all dependencies and builds the React client):
+4. Most platforms run `npm install` automatically in the root. Set the **build command** to install the sub-package dependencies and build the React client:
 
 ```bash
-npm run railway:build
+npm install --prefix server && npm install --prefix client && npm run build --prefix client
 ```
 
 5. Set the **start command** to:
@@ -171,23 +177,15 @@ npm start
 
 In production, Express serves the built React SPA from `client/dist` and handles all non-`/api` routes with `index.html` for client-side routing.
 
-### Other Platforms
+### Vercel (client only)
 
-Any platform that supports Node.js can run this app:
-
-```bash
-npm run install:all   # install dependencies
-npm run build         # build the React client
-npm start             # start the Express server
-```
-
-Ensure the environment variables above are set in your platform's config.
+A `client/vercel.json` rewrite rule is included for deploying the React frontend to Vercel as a standalone SPA. In this configuration you will need to host the Express API separately and point `VITE_API_URL` at its public URL before building.
 
 ## Project Structure
 
 ```text
 team-task-manager/
-├── package.json          # Root scripts (dev, build, install:all)
+├── package.json          # Root scripts: dev (concurrent), start
 ├── server/
 │   ├── package.json
 │   └── src/
@@ -203,6 +201,7 @@ team-task-manager/
 └── client/
     ├── index.html
     ├── package.json
+    ├── vercel.json       # SPA rewrite rules for Vercel deployment
     ├── vite.config.js
     └── src/
         ├── App.jsx       # Route definitions
