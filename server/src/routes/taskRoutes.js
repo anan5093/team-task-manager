@@ -14,9 +14,9 @@ import { validateRequest } from '../middleware/validateRequest.js';
 const router = express.Router();
 
 const filterValidation = [
-  query('project').optional().isMongoId().withMessage('Project filter must be a valid id'),
-  query('user').optional().isMongoId().withMessage('User filter must be a valid id'),
-  query('status').optional().isIn(['todo', 'in-progress', 'done']).withMessage('Invalid status')
+  query('project').optional({ values: 'falsy' }).isMongoId().withMessage('Project filter must be a valid id'),
+  query('user').optional({ values: 'falsy' }).isMongoId().withMessage('User filter must be a valid id'),
+  query('status').optional({ values: 'falsy' }).isIn(['todo', 'in-progress', 'done']).withMessage('Invalid status')
 ];
 
 const taskValidation = [
