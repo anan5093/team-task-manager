@@ -43,7 +43,7 @@ A production-ready full-stack team task management application. Admins create pr
 
 ```bash
 # Clone the repository
-git clone https://github.com/anan5093/team-task-manager.git
+git clone https://github.com/<your-username>/team-task-manager.git
 cd team-task-manager
 
 # Install all dependencies (root, server, and client)
@@ -158,7 +158,7 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=<your Railway app URL>
 ```
 
-4. Set the **build command** to:
+4. Set the **build command** to (this installs all dependencies and builds the React client):
 
 ```bash
 npm run railway:build
