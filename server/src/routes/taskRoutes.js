@@ -13,21 +13,26 @@ import { validateRequest } from '../middleware/validateRequest.js';
 
 const router = express.Router();
 
-const emptyStringToUndefined = (value) => (value === '' ? undefined : value);
+const emptyQueryToUndefined = (value) => {
+  if (typeof value !== 'string') return value;
+
+  const normalizedValue = value.trim();
+  return normalizedValue === '' ? undefined : normalizedValue;
+};
 
 const filterValidation = [
   query('project')
-    .customSanitizer(emptyStringToUndefined)
+    .customSanitizer(emptyQueryToUndefined)
     .optional()
     .isMongoId()
     .withMessage('Project filter must be a valid id'),
   query('user')
-    .customSanitizer(emptyStringToUndefined)
+    .customSanitizer(emptyQueryToUndefined)
     .optional()
     .isMongoId()
     .withMessage('User filter must be a valid id'),
   query('status')
-    .customSanitizer(emptyStringToUndefined)
+    .customSanitizer(emptyQueryToUndefined)
     .optional()
     .isIn(['todo', 'in-progress', 'done'])
     .withMessage('Invalid status')
