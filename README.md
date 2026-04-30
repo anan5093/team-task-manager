@@ -1,5 +1,9 @@
 # Team Task Manager
 
+![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-brightgreen?logo=node.js)
+![npm](https://img.shields.io/badge/npm-%3E%3D9-blue?logo=npm)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 A production-ready full-stack team task management application. Admins create projects, assign tasks, and manage members; team members track their work and update task status — all through a clean, responsive interface.
 
 **Stack:** React 18 · Vite · Tailwind CSS · Node.js · Express · MongoDB · Mongoose · JWT · bcrypt
@@ -52,12 +56,7 @@ npm run install:all
 
 ### Environment Variables
 
-```bash
-# Copy the example files
-cp server/.env.example server/.env
-```
-
-Open `server/.env` and fill in your values:
+Create `server/.env` with the following content:
 
 ```env
 PORT=5000
@@ -68,7 +67,7 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 ```
 
-The client reads a single variable. Create `client/.env`:
+Create `client/.env` with the following content:
 
 ```env
 VITE_API_URL=http://localhost:5000/api
@@ -190,7 +189,6 @@ Ensure the environment variables above are set in your platform's config.
 team-task-manager/
 ├── package.json          # Root scripts (dev, build, install:all)
 ├── server/
-│   ├── .env.example
 │   ├── package.json
 │   └── src/
 │       ├── app.js        # Express app setup (middleware, routes)
