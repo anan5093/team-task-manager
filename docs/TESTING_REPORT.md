@@ -116,3 +116,21 @@ E:\Secure rag\team-task-manager\client> npm run dev
 
 ## 4. Summary of Verification
 All components initialized correctly, established connections across cross-origin ports (CORS was handled correctly between 5173, 5000, and 8000), and processed end-to-end task analysis and project insight pipelines without errors.
+
+---
+
+## 5. UI/UX & Brand Theme Verification
+
+The client visual experience was enhanced with dark themes, glassmorphism components, and contrast optimization:
+
+### A. Authentication Pages Layout
+* **Left-Side Bento Panel**: The empty area on the left of the Login and Signup pages has been populated with a beautiful `PromoPanel` component. This showcases interactive cards with descriptions and metadata of the Core Platform, AI Swarm Service, Intelligent Insights features, and network topology/ports.
+* **Responsive Layout**: Designed to automatically hide on small screens and display in standard side-by-side split screens on desktops.
+* **Footer Component**: Created a fixed-bottom horizontal footer on the Login/Signup screens containing contact links (Email, LinkedIn, Medium, Google Scholar) and a custom signature: `"Created with love ❤️ by Anand Raj"`.
+
+### B. Global Theme & Brand Contrast Syncing
+* **Synced Internal Page Backgrounds**: Updated the internal layout (`Layout.jsx`) to sync the workspace page background with the login/signup dark slate gradient (`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900`).
+* **Sidebar & Header Glassmorphism**: Remodeled sidebar and top header to use dark slate backdrops with blur filters and thin borders (`bg-slate-950/40 border-white/5 backdrop-blur-md`).
+* **Brand Visibility & Contrast Fixes**: Converted the `"Team Task Manager"` brand text color in the header, sidebar, and promo screen from white to high-contrast teal (`text-teal-400` / `from-teal-400 to-emerald-400` gradient) to ensure absolute legibility on all laptop displays.
+* **Interaction States**: Active side menu and mobile links now render with glowing teal background panels (`bg-teal-500/20 text-teal-400 border border-teal-500/30`), while inactive links transition smoothly on hover.
+
