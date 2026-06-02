@@ -31,40 +31,6 @@ app.use(
   })
 );
 
-import fs from 'fs';
-
-app.get('/api/move-screenshots-temp', (req, res) => {
-  try {
-    const docsDir = 'E:/Secure rag/team-task-manager/docs';
-    const screenshotsDir = `${docsDir}/screenshots`;
-    
-    if (!fs.existsSync(screenshotsDir)) {
-      fs.mkdirSync(screenshotsDir, { recursive: true });
-    }
-
-    const files = fs.readdirSync(docsDir);
-    const moved = [];
-
-    files.forEach(file => {
-      if (file.startsWith('FireShot Capture') && file.endsWith('.png')) {
-        const match = file.match(/FireShot Capture (\d+)/);
-        const num = match ? match[1] : 'unknown';
-        const newName = `ss_${num}.png`;
-        
-        const oldPath = `${docsDir}/${file}`;
-        const newPath = `${screenshotsDir}/${newName}`;
-        
-        fs.renameSync(oldPath, newPath);
-        moved.push({ from: file, to: newName });
-      }
-    });
-
-    res.json({ success: true, message: 'Screenshots moved and renamed successfully', moved });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', service: 'team-task-manager-api' });
 });
