@@ -1,5 +1,6 @@
 import { Plus, Trash2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import AIRecommendations from '../components/AIRecommendations.jsx';
 
 import api from '../api/axios.js';
 import { Button } from '../components/Button.jsx';
@@ -149,6 +150,14 @@ const TaskBoard = () => {
                 </option>
               ))}
             </Select>
+            {form.project && (
+              <AIRecommendations 
+                taskId={form.project} 
+                onSelect={(userId) => {
+                  setForm({...form, assignedUser: userId});
+                }}
+              />
+            )}
             <Input label="Due date" type="date" value={form.dueDate} onChange={(e) => setForm({ ...form, dueDate: e.target.value })} />
             <Select label="Status" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
               {statuses.map((status) => (

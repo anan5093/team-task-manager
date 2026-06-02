@@ -2,6 +2,7 @@ import { AlertTriangle, CheckCircle2, ListTodo } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import api from '../api/axios.js';
+import AIInsights from '../components/AIInsights.jsx';
 import { Loading } from '../components/Loading.jsx';
 import { Select } from '../components/Input.jsx';
 import { apiErrorMessage } from '../utils/formatters.js';
@@ -125,6 +126,10 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
+      )}
+
+      {filters.project && (
+        <AIInsights projectId={filters.project} context="dashboard" />
       )}
     </div>
   );

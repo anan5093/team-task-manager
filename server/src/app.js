@@ -10,6 +10,8 @@ import authRoutes from './routes/authRoutes.js';
 import projectRoutes from './routes/projectRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import aiRoutes from './routes/aiRoutes.js';
+import contractRoutes from './routes/contractRoutes.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 const app = express();
@@ -33,10 +35,20 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok', service: 'team-task-manager-api' });
 });
 
+app.get('/', (_req, res) => {
+  res.json({
+    message: 'Team Task Manager API',
+    version: '1.0.0',
+    status: 'running'
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/contracts', contractRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   const __filename = fileURLToPath(import.meta.url);

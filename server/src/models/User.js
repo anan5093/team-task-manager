@@ -27,6 +27,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ['admin', 'member'],
       default: 'member'
+    },
+    aiPreferences: {
+      enableInsights: { type: Boolean, default: true },
+      autoRecommend: { type: Boolean, default: true },
+      reportFrequency: { type: String, enum: ['daily', 'weekly', 'monthly'], default: 'weekly' }
+    },
+    skills: [String],
+    contractAccessLevel: { 
+      type: String, 
+      enum: ['none', 'public', 'public+internal', 'all'],
+      default: 'public'
     }
   },
   { timestamps: true }

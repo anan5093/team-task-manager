@@ -1,4 +1,4 @@
-import { FolderKanban, LayoutDashboard, ListTodo, LogOut, Users } from 'lucide-react';
+import { FileText, FolderKanban, LayoutDashboard, ListTodo, LogOut, Users } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 import { useAuth } from '../context/AuthContext.jsx';
@@ -7,7 +7,8 @@ import { Button } from './Button.jsx';
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/projects', label: 'Projects', icon: FolderKanban },
-  { to: '/tasks', label: 'Task Board', icon: ListTodo }
+  { to: '/tasks', label: 'Task Board', icon: ListTodo },
+  { to: '/contracts', label: 'Contracts', icon: FileText }
 ];
 
 const Layout = () => {

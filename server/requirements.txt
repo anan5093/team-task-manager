@@ -1,0 +1,18 @@
+# This server is a Node.js Express application and uses package.json for its dependencies.
+# A Python requirements.txt is not used by this Node.js server.
+#
+# If you are looking for the Python AI Swarm service requirements, they are located in:
+# ../ai-swarm/requirements.txt
+#
+# Python dependencies used by the AI Swarm backend:
+# python-dotenv==1.0.0
+# pydantic>=2.9.0
+# pydantic-settings>=2.2.0
+# fastapi==0.110.0
+# uvicorn==0.27.0
+# httpx==0.27.0
+# ollama==0.4.8
+# langgraph>=0.1.1
+# langchain>=0.1.0
+# pymongo==4.6.0
+# motor==3.3.2

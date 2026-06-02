@@ -8,6 +8,7 @@ import Login from './pages/Login.jsx';
 import Projects from './pages/Projects.jsx';
 import Signup from './pages/Signup.jsx';
 import TaskBoard from './pages/TaskBoard.jsx';
+import Contracts from './pages/Contracts.jsx';
 
 const PublicOnly = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -37,6 +38,7 @@ const App = () => (
         <Route index element={<Dashboard />} />
         <Route path="projects" element={<Projects />} />
         <Route path="tasks" element={<TaskBoard />} />
+        <Route path="contracts" element={<Contracts />} />
       </Route>
     </Route>
     <Route path="*" element={<Navigate to="/" replace />} />
