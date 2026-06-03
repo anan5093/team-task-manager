@@ -64,18 +64,21 @@ const Signup = () => {
             <div className="mt-6 space-y-4">
               <Input
                 label="Name"
+                dark
                 value={form.name}
                 onChange={(event) => setForm({ ...form, name: event.target.value })}
               />
               <Input
                 label="Email"
                 type="email"
+                dark
                 value={form.email}
                 onChange={(event) => setForm({ ...form, email: event.target.value })}
               />
               <Input
                 label="Password"
                 type="password"
+                dark
                 value={form.password}
                 onChange={(event) => setForm({ ...form, password: event.target.value })}
               />
