@@ -38,6 +38,9 @@ graph TD
 
 ### 🔐 Bento Promo & Onboarding
 The split-screen authorization screen features a custom **Bento Promo Panel** mapping system network structures and AI service layers, complete with a platform-wide contact footer:
+### Try With this id 
+ User id- abc@example.com & password:- abc123456 
+ ### ⚠️ DEMO ACCOUNT NOTICE ⚠️This demo account is shared publicly. Please do not flood the database with spam, create unnecessary new accounts, or abuse the system.
 
 ![Bento Promo Panel](docs/FireShot%20Capture%20025%20-%20Team%20Task%20Manager%20-%20%5Blocalhost%5D.png)
 
