@@ -43,7 +43,7 @@ const Signup = () => {
         <PromoPanel />
 
         {/* RIGHT PANEL */}
-        <section className="flex w-full items-center justify-center px-4 py-10 lg:w-[520px]">
+        <section className="flex w-full flex-none items-center justify-center px-4 py-10 lg:w-[520px]">
           <form
             onSubmit={handleSubmit}
             className="w-full max-w-sm rounded-2xl bg-white/5 backdrop-blur-lg p-8 shadow-xl ring-1 ring-white/10"

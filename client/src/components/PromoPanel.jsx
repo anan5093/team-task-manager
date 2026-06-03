@@ -2,7 +2,7 @@ import { Shield, Cpu, Brain, Database, ArrowUpRight } from 'lucide-react';
 
 export const PromoPanel = () => {
   return (
-    <section className="flex flex-col justify-center items-center lg:items-start flex-1 p-6 sm:p-10 lg:p-12 bg-slate-950/20">
+    <section className="flex flex-col justify-center items-center lg:items-start w-full flex-none lg:flex-1 p-6 sm:p-10 lg:p-12 bg-slate-950/20">
       <div className="max-w-xl w-full space-y-8">
         <div className="text-center lg:text-left">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-teal-400 bg-teal-400/10 rounded-full border border-teal-500/20 mb-3 animate-pulse">
