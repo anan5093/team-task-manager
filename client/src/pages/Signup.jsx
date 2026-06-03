@@ -38,7 +38,7 @@ const Signup = () => {
 
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      <div className="flex flex-1 flex-col lg:flex-row w-full">
+      <div className="flex flex-1 flex-col-reverse lg:flex-row w-full">
         {/* LEFT PANEL */}
         <PromoPanel />
 
